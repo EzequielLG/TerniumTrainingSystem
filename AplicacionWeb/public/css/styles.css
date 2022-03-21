@@ -1,0 +1,362 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.page-container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.page-content {
+  flex: 1 1 auto;
+  background-image: url('../img/fondo.jpg');
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  padding: 4rem 0;
+}
+
+/* GLOBAL */
+
+button {
+  color: white;
+  background-color: #e45234;
+  padding: 1.2rem 2rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  /* border: 1px solid #7a7a80; */
+  border: none;
+  border-radius: 20px;
+}
+
+input:focus,
+button:focus,
+select:focus {
+  outline: none;
+}
+
+.global__dashboard-container {
+  width: 80%;
+  height: 100%;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+  margin: auto;
+  display: flex;
+}
+
+.global__dashboard-sidebar {
+  background-color: #f5a858;
+  border-radius: 20px 0 0 20px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.global__dashboard-content {
+  padding: 2rem;
+  width: 85%;
+}
+
+.global__dashboard-title {
+  margin-bottom: 20px;
+}
+
+/* NAVBAR */
+
+.navbar__container {
+  width: 100%;
+  background-color: #7a7a80;
+  /* height: 8rem; */
+  flex: 0 1 auto;
+  /* display: flex; */
+}
+
+.navbar__container .navbar__image1 {
+  /* width: 18rem; */
+  height: 8rem;
+  padding: 1rem;
+  padding-right: 0;
+}
+.navbar__container .navbar__image2 {
+  /* width: 18rem; */
+  height: 8rem;
+  padding: 1rem;
+  padding-right: 0;
+}
+
+/* LOGIN */
+
+.login__content {
+  margin: 4rem auto 0 auto;
+}
+
+.login__logo img {
+  position: relative;
+  width: 13rem;
+  /* top: -3rem; */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.login__form {
+  margin: auto;
+  text-align: center;
+}
+
+::placeholder {
+  font-size: 1.2em;
+}
+
+.login__form-control input {
+  width: 13rem;
+  padding: 15px 15px;
+  margin: 20px 0px;
+  border: 1px solid #7a7a80;
+  border-radius: 20px;
+}
+
+/* ADMIN */
+
+img.admin__avatar-img {
+  width: 5rem;
+}
+
+.admin__welcome-text {
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.admin__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.admin__actions button {
+  width: 100%;
+}
+
+.admin__actions-top {
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+th,
+td {
+  font-size: 18px;
+  font-family: 'Helvetica';
+  border: 1px solid rgb(124, 124, 124);
+  background-color: #ffffffcc;
+  text-indent: 10px;
+  padding: 10px 20px;
+}
+
+table {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 20px;
+  color: black;
+}
+
+/* REGISTRAR Y MODIFICAR USUARIO */
+
+label {
+  color: black;
+  font-size: 1.1rem;
+  font-family: 'Helvetica';
+}
+
+input,
+select {
+  padding: 3px 20px;
+  margin: 15px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.usuario__form {
+  margin-left: 2rem;
+}
+
+.usuario__form-titulo {
+  margin: 20px 2rem;
+}
+
+/* USER */
+
+.user__options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 90%;
+  gap: 1rem;
+}
+
+.user__options :nth-child(1) {
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+.user__options > a div {
+  border-radius: 10px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user__options > a div h4 {
+  text-decoration: none;
+  color: white;
+  font-size: 3rem;
+  margin-top: 0.5rem;
+}
+
+.user__options > a {
+  text-decoration: none;
+}
+
+/* USER Misiones */
+
+.usuario__misiones-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  height: 90%;
+}
+
+.usuario__misiones-container div.usuario__mision-container:nth-child(1) {
+  background-color: rgb(51, 111, 253);
+}
+
+.usuario__misiones-container div.usuario__mision-container:nth-child(2) {
+  background-color: rgb(218, 118, 52);
+}
+
+.usuario__misiones-container div.usuario__mision-container:nth-child(3) {
+  background-color: rgb(25, 177, 19);
+}
+
+.usuario__misiones-container div.usuario__mision-container:nth-child(4) {
+  background-color: rgb(148, 15, 200);
+}
+
+.usuario__mision-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  border-radius: 20px;
+  color: white;
+  padding: 2rem;
+}
+
+/* User Logros */
+
+.usuario__logros-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.usuario__logro-container {
+  background-color: #e45234;
+  color: white;
+  border-radius: 20px;
+  padding: 1rem;
+  align-items: center;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.usuario__logro-container.no-obtenido {
+  background-color: rgb(97, 97, 97);
+}
+
+/* USER Ranking */
+
+.user__ranking-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Configuración de Misiones */
+
+.misiones__misiones-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  height: 90%;
+}
+
+/* .misiones__misiones-container div:nth-child(1) {
+  background-color: rgb(51, 111, 253);
+}
+
+.misiones__misiones-container div:nth-child(2) {
+  background-color: rgb(218, 118, 52);
+}
+
+.misiones__misiones-container div:nth-child(3) {
+  background-color: rgb(25, 177, 19);
+} */
+
+.misiones__misiones-container div:nth-child(4) {
+  background-color: rgb(148, 15, 200);
+}
+
+.misiones__mision-container {
+  background-color: rgb(129, 129, 129);
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Mision 4 Trivia */
+
+.preguntas__titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preguntas__titulo > h1,
+.preguntas__titulo > button {
+  margin: 0;
+}
+
+.preguntas__pregunta-card {
+  width: 100%;
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.479);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.preguntas__pregunta-card > h2 {
+  margin: 1rem 0;
+}
+
+/* Modificar Preguntas */
+
+.modPregunta__label {
+  width: 50%;
+}
