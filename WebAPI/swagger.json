@@ -1,0 +1,1533 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Web API ",
+      "description": "API del sistema de capacitación",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:4000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Usuario",
+        "description": "API de usuarios en la aplicación"
+      },
+      {
+        "name": "Logro",
+        "description": "API de logros en la aplicación"
+      },
+      {
+        "name": "TipoUsuario",
+        "description": "API de tipos de usuario en la aplicación"
+      },
+             {
+            "name": "Mision",
+            "description": "API de Misión"
+        },
+        {
+            "name": "MisionEmpleado",
+            "description": "API de Misión-Empleado"
+        },
+        {
+            "name": "LogroEmpleado",
+            "description": "API de Logro-Empleado"
+        },
+        {
+          "name": "MaterialSemaforo",
+          "description": "API de Material-Semaforo"
+        }
+    ],
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/api/getUsuario/{id}": {
+        "get": {
+          "tags": [
+            "Usuario"
+          ],
+          "summary": "Encuentra un usuario por id",
+          "description": "Regresa el usuario con el id solicitado",
+          "operationId": "getUsuario",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "description": "Id del usuario",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            }
+          }
+        }
+      },
+      "/api/addUsuario": {
+        "post": {
+          "tags": [
+            "Usuario"
+          ],
+          "summary": "Agrega un nuevo Usuario",
+          "description": "Agrega un Usaurio a la base de datos",
+          "operationId": "addUsuario",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Nuevo usuario",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            },
+            "405": {
+              "description": "Datos inválidos"
+            }
+          }
+        }
+      },
+      "/api/updateUsuario/{id}": {
+        "put": {
+          "tags": [
+            "Usuario"
+          ],
+          "summary": "Actualiza un usuario",
+          "description": "Actualiza un usuario a la base de datos",
+          "operationId": "updateUsuario",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "description": "Id del usuario a actualizar",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Datos nuevos",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            },
+            "400": {
+              "description": "Usuario Inválido"
+            },
+            "404": {
+              "description": "Usuario no encontrado"
+            }
+          }
+        }
+      },
+
+      "/api/updateUsuarioAdmin/{id}": {
+        "put": {
+          "tags": [
+            "Usuario"
+          ],
+          "summary": "Actualiza un usuario",
+          "description": "Actualiza un usuario a la base de datos",
+          "operationId": "updateUsuario",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "description": "Id del usuario a actualizar",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Datos nuevos",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            },
+            "400": {
+              "description": "Usuario Inválido"
+            },
+            "404": {
+              "description": "Usuario no encontrado"
+            }
+          }
+        }
+      },
+
+
+
+      "/api/deleteUsuario/{id}": {
+        "delete": {
+          "tags": [
+            "Usuario"
+          ],
+          "summary": "Borra un Usuario",
+          "description": "Borra un Usuario de la base de datos",
+          "operationId": "deleteUsuario",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "description": "Id del Usuario a borrar",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            },
+            "400": {
+              "description": "Usuario Inválido"
+            },
+            "404": {
+              "description": "Usuario no encontrado"
+            }
+          }
+        }
+      },
+
+      "/api/getUsuariosAdmin/{id}": {
+        "get": {
+          "tags": [
+            "Usuario"
+          ],
+          "summary": "Trae usuarios de un admin",
+          "description": "Trae todos los usuarios asociados con un Administrador",
+          "operationId": "getUsuarioAdmin",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "description": "Id del Administrador",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            },
+            "400": {
+              "description": "Administrador Inválido"
+            },
+            "404": {
+              "description": "Administrador no encontrado"
+            }
+          }
+        }
+      },
+
+
+      "/api/getUsuarios": {
+        "get": {
+          "tags": [
+            "Usuario"
+          ],
+          "summary": "Obtiene todos los usuarios",
+          "description": "Regresa todos los usuarios de la tabla Usuario",
+          "operationId": "get",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Usuario"
+              }
+            }
+          }
+        }
+      },
+      "/api/getLogro/{id}": {
+        "get": {
+          "tags": [
+            "Logro"
+          ],
+          "summary": "Encuentra un logro por id",
+          "description": "Regresa el logro con el id solicitado",
+          "operationId": "getLogro",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "description": "Id del logro",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Logro"
+              }
+            }
+          }
+        }
+      },
+      "/api/addLogro": {
+        "post": {
+          "tags": [
+            "Logro"
+          ],
+          "summary": "Agrega un nuevo logro",
+          "description": "Agrega un logro a la base de datos",
+          "operationId": "addLogro",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Nuevo logro",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Logro"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Logro"
+              }
+            },
+            "405": {
+              "description": "Datos inválidos"
+            }
+          }
+        }
+      },
+      "/api/deleteLogro/{id}": {
+        "delete": {
+          "tags": [
+            "Logro"
+          ],
+          "summary": "Borra un logro",
+          "description": "Borra un logro de la base de datos",
+          "operationId": "deleteLogro",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "description": "Id del logro a borrar",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "schema": {
+                "$ref": "#/definitions/Logro"
+              }
+            },
+            "400": {
+              "description": "Usuario Inválido"
+            },
+            "404": {
+              "description": "Usuario no encontrado"
+            }
+          }
+        }
+      },
+        "/api/getLogros": {
+          "get": {
+            "tags": [
+              "Logro"
+            ],
+            "summary": "Obtiene todos los logros",
+            "description": "Regresa todos los logros de la tabla Logro",
+            "operationId": "get",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [],
+            "responses": {
+              "200": {
+                "description": "Operación exitosa",
+                "schema": {
+                  "$ref": "#/definitions/Logro"
+                }
+              }
+            }
+          }
+        },
+        "/api/getTipoUsuario/{id}": {
+          "get": {
+            "tags": [
+              "TipoUsuario"
+            ],
+            "summary": "Encuentra un tipo de usuario por id",
+            "description": "Regresa el tipo de usuario con el id solicitado",
+            "operationId": "getTipoUsuario",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id",
+                "description": "Id del tipo de usuario",
+                "required": true,
+                "type": "integer",
+                "format": "int64"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Operación exitosa",
+                "schema": {
+                  "$ref": "#/definitions/TipoUsuario"
+                }
+              }
+            }
+          }
+        },
+        "/api/addTipoUsuario": {
+          "post": {
+            "tags": [
+              "TipoUsuario"
+            ],
+            "summary": "Agrega un nuevo tipo de usuario",
+            "description": "Agrega un tipo de usuario a la base de datos",
+            "operationId": "addTipoUsuario",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                "name": "body",
+                "description": "Nuevo tipo de usuario",
+                "required": true,
+                "schema": {
+                  "$ref": "#/definitions/TipoUsuario"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Operación exitosa",
+                "schema": {
+                  "$ref": "#/definitions/TipoUsuario"
+                }
+              },
+              "405": {
+                "description": "Datos inválidos"
+              }
+            }
+          }
+        },
+        "/api/getTiposUsuarios": {
+            "get": {
+              "tags": [
+                "TipoUsuario"
+              ],
+              "summary": "Obtiene todos los tipos de usuario",
+              "description": "Regresa todos los tipos de usuario de la tabla TipoUsuario",
+              "operationId": "get",
+              "produces": [
+                "application/json"
+              ],
+              "parameters": [],
+              "responses": {
+                "200": {
+                  "description": "Operación exitosa",
+                  "schema": {
+                    "$ref": "#/definitions/TipoUsuario"
+                  }
+                }
+              }
+            }
+          },
+          "/api/getMisiones": {
+            "get": {
+                "tags": [
+                    "Mision"
+                ],
+                "summary": "Obtiene todas las misiones",
+                "description": "Regresa todas las misiones",
+                "operationId": "getMisiones",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Mision"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getMision/{idMision}": {
+            "get": {
+                "tags": [
+                    "Mision"
+                ],
+                "summary": "Encuentra una misión por id",
+                "description": "Regresa la misión con el id solicitado",
+                "operationId": "getMision",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                      "in": "path",
+                        "name": "idMision",
+                        "description": "Id de la misión a consultar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Mision"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addMision": {
+            "post": {
+                "tags": [
+                    "Mision"
+                ],
+                "summary": "Agrega una nueva misión",
+                "description": "Agrega una misión a la base de datos",
+                "operationId": "addMision",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nueva misión",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Mision"
+                        }                      
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Mision"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateMision/{idMision}": {
+            "put": {
+                "tags": [
+                    "Mision"
+                ],
+                "summary": "Actualiza una misión",
+                "description": "Actualiza una misión en la base de datos",
+                "operationId": "updateMision",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idMision",
+                        "description": "Id de la misión a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevos de una misión",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Mision"
+                        }                      
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Mision"
+                        }
+                    },
+                    "400": {
+                        "description": "Misión Inválida"
+                    },
+                    "404": {
+                        "description": "Misión no encontrada"
+                    }
+
+                }
+            }
+        },
+        "/api/deleteMision/{idMision}": {
+            "delete": {
+                "tags": [
+                    "Mision"
+                ],
+                "summary": "Borra una misión",
+                "description": "Inactiva una misión de la base de datos",
+                "operationId": "deleteMision",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                      "in": "path",
+                        "name": "idMision",
+                        "description": "Id de la misión a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Mision"
+                        }
+                    },
+                    "400": {
+                        "description": "Misión Inválida"
+                    },
+                    "404": {
+                        "description": "Misión no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/getMisionesEmpleados": {
+            "get": {
+                "tags": [
+                    "MisionEmpleado"
+                ],
+                "summary": "Obtiene todas las misiones que los empleados ya han superado",
+                "description": "Regresa todas las misiones que los empleados ya han superado",
+                "operationId": "getMisionesEmpleados",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MisionEmpleado"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getMisionesEmpleado/{idEmpleado}": {
+            "get": {
+                "tags": [
+                    "MisionEmpleado"
+                ],
+                "summary": "Encuentra todas las misiones superadas por un empleado, mediante su id",
+                "description": "Regresa todas las misiones superadas por un empleado, mediante la solicitud de su id",
+                "operationId": "getMisionesEmpleado",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idEmpleado",
+                        "description": "Id del empleado a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MisionEmpleado"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getMisionEmpleado/{idMision}/{idEmpleado}": {
+            "get": {
+                "tags": [
+                    "MisionEmpleado"
+                ],
+                "summary": "Encuentra una misión superada por un empleado, mediante el id de ambos",
+                "description": "Regresa la misión superada por un empleado, mediante el id solicitado de ambos",
+                "operationId": "getMisionEmpleado",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idMision",
+                        "description": "Id de la misión a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idEmpleado",
+                        "description": "Id del empleado a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MisionEmpleado"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addMisionEmpleado": {
+            "post": {
+                "tags": [
+                    "MisionEmpleado"
+                ],
+                "summary": "Agrega a un empleado una misión superada por él",
+                "description": "Agrega a un empleado una misión superada por él a la base de datos",
+                "operationId": "addMisionEmpleado",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nueva misión superada por un empleado",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MisionEmpleado"
+                        }                      
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MisionEmpleado"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateMisionEmplado/{idMision}/{idEmpleado}": {
+            "put": {
+                "tags": [
+                    "MisionEmpleado"
+                ],
+                "summary": "Actualiza el estatus de realización de una misión a un empleado",
+                "description": "Actualiza el estatus de realización de una misión a un empleado en la base de datos",
+                "operationId": "updateMisionEmpleado",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idMision",
+                        "description": "Id de la misión a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idEmpleado",
+                        "description": "Id del empleado a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevos de la misión superada de un empleado",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MisionEmpleado"
+                        }                      
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MisionEmpleado"
+                        }
+                    },
+                    "400": {
+                        "description": "Mision de empleado Inválida"
+                    },
+                    "404": {
+                        "description": "Mision de empleado no encontrada"
+                    }
+
+                }
+            }
+        },
+        "/api/deleteMisionEmpleado/{idMision}/{idEmpleado}": {
+            "delete": {
+                "tags": [
+                    "MisionEmpleado"
+                ],
+                "summary": "Borra la misión de empleado",
+                "description": "Borra la misión de un empleado de la base de datos",
+                "operationId": "deleteMisionEmpleado",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idMision",
+                        "description": "Id de la misión a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idEmpleado",
+                        "description": "Id del empleado a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MisionEmpleado"
+                        }
+                    },
+                    "400": {
+                        "description": "Mision de empleado Inválida"
+                    },
+                    "404": {
+                        "description": "Mision de empleado no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/getLogrosEmpleados": {
+            "get": {
+                "tags": [
+                    "LogroEmpleado"
+                ],
+                "summary": "Obtiene todos los logros de todos los empleados",
+                "description": "Regresa todos los logros de todos los empleados",
+                "operationId": "getLogrosEmpleados",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LogroEmpleado"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getLogrosEmpleado/{idEmpleado}": {
+            "get": {
+                "tags": [
+                    "LogroEmpleado"
+                ],
+                "summary": "Obtiene todos los logros de un empleado mediante su id",
+                "description": "Regresa todos los logros de un empleado mediante la solicitud de su id",
+                "operationId": "getLogrosEmpleado",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                          "name": "idEmpleado",
+                          "description": "Id del empleado a obtener",
+                          "required": true,
+                          "type": "integer",
+                          "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LogroEmpleado"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getLogroEmpleado/{idLogro}/{idEmpleado}": {
+            "get": {
+                "tags": [
+                    "LogroEmpleado"
+                ],
+                "summary": "Encuentra el logro de un empleado mediante el id de ambos",
+                "description": "Regresa el logro de un empleado mediante el id solicitado de ambos",
+                "operationId": "getLogroEmpleado",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idLogro",
+                        "description": "Id del logro a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                          "name": "idEmpleado",
+                          "description": "Id del empleado a obtener",
+                          "required": true,
+                          "type": "integer",
+                          "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LogroEmpleado"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addLogroEmpleado": {
+            "post": {
+                "tags": [
+                    "LogroEmpleado"
+                ],
+                "summary": "Agrega un nuevo logro a un empleado",
+                "description": "Agrega un nuevo logro a un empleado en la base de datos",
+                "operationId": "addLogroEmpleado",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo logro de un empleado",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LogroEmpleado"
+                        }                      
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LogroEmpleado"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateLogroEmpleado/{idLogro}/{idEmpleado}": {
+            "put": {
+                "tags": [
+                    "LogroEmpleado"
+                ],
+                "summary": "Actualiza el logro de un empleado",
+                "description": "Actualiza el logro de un empleado en la base de datos",
+                "operationId": "updateLogroEmpleado",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                      "in": "path",
+                        "name": "idLogro",
+                        "description": "Id del logro a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idEmpleado",
+                        "description": "Id del empleado a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevos del logro del empleado",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LogroEmpleado"
+                        }                      
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LogroEmpleado"
+                        }
+                    },
+                    "400": {
+                        "description": "Logro de empleado Inválido"
+                    },
+                    "404": {
+                        "description": "Logro de empleado no encontrado"
+                    }
+
+                }
+            }
+        },
+        "/api/deleteLogroEmpleado/{idLogro}/{idEmpleado}": {
+            "delete": {
+                "tags": [
+                    "LogroEmpleado"
+                ],
+                "summary": "Borra el logro de un empleado",
+                "description": "Borra el logro de un empleado de la base de datos",
+                "operationId": "deleteLogroEmpleado",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idLogro",
+                        "description": "Id del logro a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idEmpleado",
+                        "description": "Id del empleado a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LogroEmpleado"
+                        }
+                    },
+                    "400": {
+                        "description": "Logro de empleado Inválido"
+                    },
+                    "404": {
+                        "description": "Logro de empleado no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getMaterialesSemaforo": {
+          "get": {
+              "tags": [
+                  "MaterialSemaforo"
+              ],
+              "summary": "Obtiene todos los materiales de los semáforos",
+              "description": "Regresa todos los materiales de los semáforos",
+              "operationId": "getMaterialesSemaforo",
+              "produces": [
+                  "application/json"
+              ],
+              "parameters": [],
+              "responses": {
+                  "200": {
+                      "description": "Operación exitosa",
+                      "schema": {
+                          "$ref": "#/definitions/MaterialSemaforo"
+                      }
+                  }
+              }
+          }
+      },
+      "/api/getMaterialSemaforo/{idMaterialSemaforo}": {
+          "get": {
+              "tags": [
+                  "MaterialSemaforo"
+              ],
+              "summary": "Encuentra un material de un semáforo por id",
+              "description": "Regresa el material de un semáforo con el id solicitado",
+              "operationId": "getMaterialSemaforo",
+              "produces": [
+                  "application/json"
+              ],
+              "parameters": [
+                  {
+                    "in": "path",
+                      "name": "idMaterialSemaforo",
+                      "description": "Id del material de un semáforo a consultar",
+                      "required": true,
+                      "type": "integer",
+                      "format": "int64"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Operación exitosa",
+                      "schema": {
+                          "$ref": "#/definitions/MaterialSemaforo"
+                      }
+                  }
+              }
+          }
+      },
+      "/api/addMaterialSemaforo": {
+          "post": {
+              "tags": [
+                  "MaterialSemaforo"
+              ],
+              "summary": "Agrega un nuevo material de un semáforo",
+              "description": "Agrega un material de un semáforo a la base de datos",
+              "operationId": "addMaterialSemaforo",
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "parameters": [
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Nueva material de un semáforo",
+                      "required": true,
+                      "schema": {
+                          "$ref": "#/definitions/MaterialSemaforo"
+                      }                      
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Operación exitosa",
+                      "schema": {
+                          "$ref": "#/definitions/MaterialSemaforo"
+                      }
+                  },
+                  "405": {
+                      "description": "Datos inválidos"
+                  }
+              }
+          }
+      },
+      "/api/updateMaterialSemaforo/{idMaterialSemaforo}": {
+          "put": {
+              "tags": [
+                  "MaterialSemaforo"
+              ],
+              "summary": "Actualiza un material de un semáforo",
+              "description": "Actualiza un material de un semáforo en la base de datos",
+              "operationId": "updateMaterialSemaforo",
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "parameters": [
+                  {
+                      "in": "path",
+                      "name": "idMaterialSemaforo",
+                      "description": "Id del material de un semáforo a actualizar",
+                      "required": true,
+                      "type": "integer",
+                      "format": "int64"
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Datos nuevos de un material de un semáforo",
+                      "required": true,
+                      "schema": {
+                          "$ref": "#/definitions/MaterialSemaforo"
+                      }                      
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Operación exitosa",
+                      "schema": {
+                          "$ref": "#/definitions/MaterialSemaforo"
+                      }
+                  },
+                  "400": {
+                      "description": "Material de semáforo Inválida"
+                  },
+                  "404": {
+                      "description": "Material de semáforo no encontrado"
+                  }
+
+              }
+          }
+      },
+      "/api/deleteMaterialSemaforo/{idMaterialSemaforo}": {
+          "delete": {
+              "tags": [
+                  "MaterialSemaforo"
+              ],
+              "summary": "Borra un material de un semáforo",
+              "description": "Inactiva un material de un semáforo de la base de datos",
+              "operationId": "deleteMaterialSemaforo",
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "parameters": [
+                  {
+                    "in": "path",
+                      "name": "idMaterialSemaforo",
+                      "description": "Id del material de un semáforo a borrar",
+                      "required": true,
+                      "type": "integer",
+                      "format": "int64"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Operación exitosa",
+                      "schema": {
+                          "$ref": "#/definitions/MaterialSemaforo"
+                      }
+                  },
+                  "400": {
+                      "description": "Material de semáforo inválido"
+                  },
+                  "404": {
+                      "description": "Material de semáforo no encontrado"
+                  }
+              }
+          }
+      }
+    },
+
+    "definitions": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "idUsuario": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "apellidoPaterno": {
+            "type": "string"
+          },
+          "apellidoMaterno": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "tipoUsuario": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "puesto": {
+            "type": "string"
+          },
+          "idAdministrador": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Logro": {
+        "type": "object",
+        "properties": {
+          "idLogro": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "puntos": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "TipoUsuario": {
+        "type": "object",
+        "properties": {
+          "idTipoUsuario": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tipoUsuario": {
+            "type": "string"
+          }
+        }
+      },
+       "Mision": {
+            "type": "object",
+            "properties": {
+                "nombre": {
+                    "type": "string"
+                },
+                "habilidad": {
+                    "type": "string"
+                },
+                "dificultad": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "puntos": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "numero": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "MisionEmpleado": {
+            "type": "object",
+            "properties": {
+                "idMision": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "idEmpleado": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "fechaCurso": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Fecha y hora en que el empleado cursó la misión",
+                    "example": "2021-07-21T17:32:28Z"
+                }
+            }
+        },
+        "LogroEmpleado": {
+            "type": "object",
+            "properties": {
+                "idEmpleado": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "idLogro": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "fechaObtencion": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Fecha y hora en que el empleado obtuvo un logro",
+                    "example": "2021-07-21T17:32:28Z"
+                }
+            }
+        },
+        "MaterialSemaforo": {
+          "type": "object",
+          "properties": {
+            "idMaterialSemaforo": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "descripcion": {
+              "type": "string"
+            },
+            "color": {
+              "type": "string"
+            }
+          }
+        }
+    }
+  }
