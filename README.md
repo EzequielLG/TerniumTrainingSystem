@@ -1,1 +1,1 @@
-# MTY.TC2005B.8.2111.39262-Equipo1
+# Derechos reservados Tecnológico de Monterrey / Ternium S.A. de C.V.
