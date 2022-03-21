@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 2) { %><%-
+  include('../partials/dashboard-user.ejs') %>
+
+  <div class="global__dashboard-content">
+    <h1 class="global__dashboard-title">Juego</h1>
+    <iframe
+      src="/juego/index.html?idUsuario=<%- user.idUsuario %>"
+      width="1080"
+      height="720"
+    ></iframe>
+  </div>
+
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer.ejs') %>

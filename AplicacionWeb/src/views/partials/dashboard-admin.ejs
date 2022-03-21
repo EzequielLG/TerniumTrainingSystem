@@ -1,0 +1,29 @@
+<div class="global__dashboard-sidebar">
+  <img src="/img/iconos/avatar.jpg" class="admin__avatar-img" />
+  <p class="admin__welcome-text">Hola, <%- user.nombre %></p>
+  <div class="admin__actions">
+    <div class="admin__actions-top">
+      <a href="/admin">
+        <button>Inicio</button>
+      </a>
+      <a href="/admin/registrarUsuario">
+        <button>Añadir usuario</button>
+      </a>
+      <a href="/admin/estadisticas">
+        <button>Estadísticas</button>
+      </a>
+      <a href="/admin/ranking">
+        <button>Ranking</button>
+      </a>
+      <a href="/admin/misiones">
+        <button>Config. Misiones</button>
+      </a>
+    </div>
+
+    <div class="admin__actions-bottom">
+      <form action="/logout?_method=DELETE" method="post">
+        <button>Cerrar Sesión</button>
+      </form>
+    </div>
+  </div>
+</div>

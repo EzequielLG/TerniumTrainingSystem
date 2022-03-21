@@ -1,0 +1,41 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 1) { %><%-
+  include('../partials/dashboard-admin.ejs') %>
+
+  <div class="global__dashboard-content">
+    <h2 class="usuario__form-titulo">Creación de nuevo usuario</h2>
+
+    <form method="post" action="/admin/registrarUsuario" class="usuario__form">
+      <label for="nombre">Nombre: </label><br />
+      <input type="text" id="nombre" name="nombre" /><br />
+      <label for="apellidoP">Apellido Paterno: </label><br />
+      <input type="text" id="apellidoP" name="apellidoP" /><br />
+      <label for="apellidoM">Apellido Materno: </label><br />
+      <input type="text" id="apellidoM" name="apellidoM" /><br />
+      <label for="username">Username: </label><br />
+      <input type="text" id="username" name="username" /><br />
+      <label for="password"> Password: </label><br />
+      <input type="text" id="password" name="password" /><br />
+      <label for="puesto">Tipo de Usuario: </label><br />
+      <select name="tipoUsuario" id="">
+        <option value="2" selected>Dependiente</option>
+        <option value="1">Administrador</option></select
+      ><br />
+      <label for="puesto">Puesto: </label><br />
+      <input type="text" id="puesto" name="puesto" /><br />
+
+      <button>Crear</button>
+    </form>
+  </div>
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer.ejs') %>

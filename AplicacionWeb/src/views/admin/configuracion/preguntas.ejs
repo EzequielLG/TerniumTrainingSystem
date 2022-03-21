@@ -1,0 +1,70 @@
+<%- include('../../partials/header.ejs') %> <%-
+include('../../partials/navbar.ejs') %>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 1) { %> <%-
+  include('../../partials/dashboard-admin.ejs') %>
+
+  <div class="global__dashboard-content">
+    <div class="preguntas__titulo">
+      <h1 class="global__dashboard-title">Preguntas Trivia</h1>
+      <a href="/admin/agregarPregunta"><button>Agregar Pregunta</button></a>
+    </div>
+    <% preguntas.forEach(function(pregunta, index){ %>
+    <div class="preguntas__pregunta-card">
+      <h4>
+        <span style="color: rgb(104, 104, 104)">Pregunta <%- index + 1 %></span>
+      </h4>
+      <h2><%- pregunta.pregunta %></h2>
+      <h3>
+        <span style="color: rgb(34, 190, 34)">Correcta:</span> <%-
+        pregunta.correcta %>
+      </h3>
+      <h3>
+        <span style="color: rgb(221, 22, 22)">Incorrecta:</span> <%-
+        pregunta.incorrectaUno %>
+      </h3>
+      <h3>
+        <span style="color: rgb(221, 22, 22)">Incorrecta:</span> <%-
+        pregunta.incorrectaDos %>
+      </h3>
+      <a href="/admin/modificarPregunta/<%- pregunta.idPreguntaRespuesta %>"
+        ><button>Modificar</button></a
+      >
+      <form
+        action="/admin/deletePregunta/<%- pregunta.idPreguntaRespuesta %>"
+        method="POST"
+        style="display: inline"
+        id="deletePreguntaForm<%- index %>"
+      >
+        <button type="button" onclick="deletePregunta(<%- index %>)">
+          Eliminar
+        </button>
+      </form>
+    </div>
+    <% })%>
+  </div>
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<script>
+  // document.$('.botonForm').addEventListener('click', () => {
+  //   if (confirm('¿Estas seguro que deseas borrar esta pregunta?')) {
+  //     document.getElementById('deletePreguntaForm').submit();
+  //   }
+  // });
+
+  const deletePregunta = (index) => {
+    console.log('netr');
+    if (confirm('¿Estas seguro que deseas borrar esta pregunta?')) {
+      document.getElementById(`deletePreguntaForm${index}`).submit();
+    }
+  };
+</script>
+
+<%- include('../../partials/footer.ejs') %>

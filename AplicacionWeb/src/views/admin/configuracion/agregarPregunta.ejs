@@ -1,0 +1,65 @@
+<%- include('../../partials/header.ejs') %> <%-
+include('../../partials/navbar.ejs') %>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 1) { %> <%-
+  include('../../partials/dashboard-admin.ejs') %>
+
+  <div class="global__dashboard-content">
+
+      <h1 class="global__dashboard-title">Nueva Pregunta</h1>
+
+
+      <form
+        action="/admin/agregarPregunta"
+        method="POST"
+        style="display: inline"
+        class="usuario__form"
+      >
+      <br />
+        <label for="pregunta">Pregunta: </label><br />
+        <input
+            type="text"
+            id="pregunta"
+            value=""
+            name="pregunta"
+            class="modPregunta__label"
+        />
+        <br />
+        <label for="correcta">Respuesta Correcta: </label><br />
+        <input
+            type="text"
+            id="correcta"
+            value=""
+            name="correcta"
+            class="modPregunta__label"
+        /><br />
+        <label for="incorrectaUno">Respuesta Incorrecta 1: </label><br />
+        <input
+            type="text"
+            id="incorrectaUno"
+            value=""
+            name="incorrectaUno"
+            class="modPregunta__label"
+        /><br />
+        <label for="incorrectaDos">Respuesta Incorrecta 2: </label><br />
+        <input
+            type="text"
+            id="incorrectaDos"
+            value=""
+            name="incorrectaDos"
+            class="modPregunta__label"
+        /><br />
+        <button>Agregar</button>
+      </form>
+    </div>
+  </div>
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<%- include('../../partials/footer.ejs') %>

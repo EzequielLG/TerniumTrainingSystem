@@ -1,0 +1,65 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 1) { %><%-
+  include('../partials/dashboard-admin.ejs') %>
+
+  <div class="global__dashboard-content">
+    <h1 class="global__dashboard-title">Dependientes</h1>
+
+    <div class="tabla">
+      <table>
+        <tr>
+          <th class="numero">#</th>
+          <th class="nombre">Nombre</th>
+          <th class="user">Usuario</th>
+          <th class="det">Detalles</th>
+          <th class="det">Eliminar</th>
+        </tr>
+        <% users.forEach(function(user, index){ %>
+        <tr>
+          <td><%- index + 1 %></td>
+          <td><%- user.nombre + ' ' + user.apellidoPaterno %></td>
+          <td><%- user.username %></td>
+          <td>
+            <a class="colab" href="/admin/detallesUsuario/<%- user.idUsuario %>"
+              >Detalles</a
+            >
+          </td>
+          <td>
+            <form
+              action="admin/deleteUsuario/<%- user.idUsuario %>"
+              method="POST"
+              id="deleteUsuarioForm<%- index %>"
+            >
+              <a
+                class="colab"
+                href="javascript:{}"
+                onclick="deleteUsuario(<%- index %>)"
+                >Eliminar</a
+              >
+            </form>
+          </td>
+        </tr>
+        <% })%>
+      </table>
+    </div>
+  </div>
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<script>
+  const deleteUsuario = (index) => {
+    if (confirm('¿Estas seguro que deseas borrar este usuario?')) {
+      document.getElementById(`deleteUsuarioForm${index}`).submit();
+    }
+  };
+</script>
+
+<%- include('../partials/footer.ejs') %>

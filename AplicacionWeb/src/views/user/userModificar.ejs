@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 2) { %><%-
+  include('../partials/dashboard-user.ejs') %>
+
+  <div class="global__dashboard-content">
+    <h1 class="global__dashboard-title">Modificar información</h1>
+
+    <form action="/user/modificarUsuario" method="POST" class="usuario__form">
+      <label for="username">Username: </label><br />
+      <input
+        type="text"
+        id="username"
+        name="username"
+        value="<%- user.username %>"
+      /><br />
+      <label for="nombre">Nombre: </label><br />
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        value="<%- user.nombre %>"
+      /><br />
+      <label for="apellidoP">Apellido Paterno: </label><br />
+      <input
+        type="text"
+        id="apellidoP"
+        name="apellidoP"
+        value="<%- user.apellidoPaterno %>"
+      /><br />
+      <label for="apellidoM">Apellido Materno: </label><br />
+      <input
+        type="text"
+        id="apellidoM"
+        name="apellidoM"
+        value="<%- user.apellidoMaterno %>"
+      /><br />
+      <label for="password"> Password: </label><br />
+      <input
+        type="text"
+        id="password"
+        name="password"
+        value="<%- user.password %>"
+      /><br />
+
+      <button>Guardar</button>
+    </form>
+  </div>
+
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer.ejs') %>

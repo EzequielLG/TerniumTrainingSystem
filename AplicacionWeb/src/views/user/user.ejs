@@ -1,0 +1,46 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 2) { %> <%-
+  include('../partials/dashboard-user.ejs') %>
+
+  <div class="global__dashboard-content">
+    <h1 class="global__dashboard-title">¡Bienvenido/a de vuelta!</h1>
+    <div class="user__options">
+      <a href="/user/jugar?idUsuario=<%- user.idUsuario %>"
+        ><div style="flex-direction: row; background-color: rgb(51, 111, 253)">
+          <img src="/img/iconos/play.png" alt="" style="margin-right: 1.5rem" />
+          <h4 style="margin-left: 1.5rem">Jugar</h4>
+        </div></a
+      >
+      <a href="/user/ranking"
+        ><div style="background-color: rgb(218, 118, 52)">
+          <img src="/img/iconos/rank.png" alt="" />
+          <h4>Ranking</h4>
+        </div></a
+      >
+      <a href="/user/misiones"
+        ><div style="background-color: rgb(25, 177, 19)">
+          <img src="/img/iconos/target.png" alt="" />
+          <h4>Misiones</h4>
+        </div></a
+      >
+      <a href="/user/logros"
+        ><div style="background-color: rgb(148, 15, 200)">
+          <img src="/img/iconos/medal.png" alt="" />
+          <h4>Logros</h4>
+        </div></a
+      >
+    </div>
+  </div>
+
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer.ejs') %>

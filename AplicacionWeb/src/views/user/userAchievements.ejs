@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 2) { %><%-
+  include('../partials/dashboard-user.ejs') %>
+
+  <div class="global__dashboard-content">
+    <h1 class="global__dashboard-title">Mis Logros</h1>
+
+    <div class="usuario__logros-container">
+      <% logros.forEach(function(logro, index){ %> <%
+      if(logrosCompletados[index] == 1){ %>
+      <div class="usuario__logro-container obtenido">
+        <% } else { %>
+        <div class="usuario__logro-container no-obtenido">
+          <% } %>
+
+          <div>
+            <h3>"<%- logro.nombre %>"</h3>
+            <% if(logrosCompletados[index] == 1){ %>
+            <img src="/img/iconos/medalGold.png" alt="" />
+            <% } else { %>
+            <img src="/img/iconos/medalGrey.png" alt="" />
+            <% } %>
+            <h4><%- logro.descripcion %></h4>
+            <h3>Puntos: <%- logro.puntos %></h3>
+          </div>
+        </div>
+        <% })%>
+      </div>
+    </div>
+
+    <% } else { %>
+    <div style="display: block; margin: 1rem 1rem">
+      <h1>No tiene permisos para ver esta página</h1>
+      <a href="/"><button>Volver a inicio</button></a>
+    </div>
+    <% } %>
+  </div>
+
+  <%- include('../partials/footer.ejs') %>
+</div>

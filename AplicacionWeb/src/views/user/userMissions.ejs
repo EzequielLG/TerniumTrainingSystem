@@ -1,0 +1,37 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 2) { %><%-
+  include('../partials/dashboard-user.ejs') %>
+
+  <div class="global__dashboard-content">
+    <h1 class="global__dashboard-title">Mis misiones</h1>
+
+    <div class="usuario__misiones-container">
+      <% misiones.forEach(function(mision, index){ %>
+      <div class="usuario__mision-container">
+        <div>
+          <h1>Mision <%- index + 1 %></h1>
+        </div>
+        <div>
+          <h2>"<%- mision.nombre %>"</h2>
+          <h3><%- mision.habilidad %></h3>
+          <h4>Dificultad: <%- mision.dificultad %></h4>
+          <h4>Puntos: <%- mision.puntos %></h4>
+        </div>
+        <div><h2>Veces completada: <%- misionesEmpleado[index] %></h2></div>
+      </div>
+      <% })%>
+    </div>
+  </div>
+
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer.ejs') %>

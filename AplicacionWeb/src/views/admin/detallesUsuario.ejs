@@ -1,0 +1,34 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 1) { %> <%-
+  include('../partials/dashboard-admin.ejs') %>
+
+  <div class="global__dashboard-content">
+    <h1 class="global__dashboard-title">Detalles de usuario</h1>
+    <a href="/admin/modificarUsuario/<%- userData.idUsuario %>"
+      ><button style="margin: -0.2rem 0 1rem 0; padding: 1rem">
+        Modificar usuario
+      </button></a
+    >
+    <div class="user-details">
+      <p>Id empleado: <%- userData.idUsuario %></p>
+      <p>
+        Nombre Completo: <%- userData.nombre + ' ' + userData.apellidoPaterno +
+        ' ' + userData.apellidoMaterno %>
+      </p>
+      <p>Username: <%- userData.username %></p>
+      <p>Contraseña: <%- userData.password %></p>
+      <p>Puesto: <%- userData.puesto %></p>
+    </div>
+  </div>
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,137 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 1) { %><%-
+  include('../partials/dashboard-admin.ejs') %>
+
+  <div class="global__dashboard-content">
+    <h1 class="global__dashboard-title">Estadisticas</h1>
+
+    <h2 style="margin-top: 2rem">
+      Misiones completadas por mes en los últimos 6 meses
+    </h2>
+    <canvas id="myChart"></canvas>
+
+    <h2 style="margin-top: 3rem">Veces completada cada mision</h2>
+    <canvas id="myChart2"></canvas>
+  </div>
+  <% } else { %>
+  <div style="display: block; margin: 1rem 1rem">
+    <h1>No tiene permisos para ver esta página</h1>
+    <a href="/"><button>Volver a inicio</button></a>
+  </div>
+  <% } %>
+</div>
+
+<script>
+  const misionesJSON = '<%- JSON.stringify(dataMisiones) %>';
+  const misiones = JSON.parse(misionesJSON);
+
+  const reversedMisiones = misiones.reverse();
+
+  const meses = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ];
+
+  const mesActual = new Date().getMonth();
+
+  const calcularMes = (mesActual, resta) => {
+    if (mesActual - resta < 0) {
+      return mesActual - resta + 12;
+    } else {
+      return mesActual - resta;
+    }
+  };
+
+  const labels = [
+    meses[calcularMes(mesActual, 5)],
+    meses[calcularMes(mesActual, 4)],
+    meses[calcularMes(mesActual, 3)],
+    meses[calcularMes(mesActual, 2)],
+    meses[calcularMes(mesActual, 1)],
+    meses[calcularMes(mesActual, 0)],
+  ];
+
+  const datosMisiones = [];
+
+  for (i = 0; i < 6; i++) {
+    const misionActual = reversedMisiones.find(
+      (mision) => mision.Mes - 1 == calcularMes(mesActual, i)
+    );
+    if (misionActual) {
+      datosMisiones.unshift(misionActual.Misiones);
+    } else {
+      datosMisiones.unshift(0);
+    }
+  }
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: '# de misiones',
+        backgroundColor: 'rgb(228,82,52)',
+        borderColor: 'rgb(228,82,52)',
+        data: datosMisiones,
+      },
+    ],
+  };
+  const config = {
+    type: 'line',
+    data,
+    options: {},
+  };
+
+  var myChart = new Chart(document.getElementById('myChart'), config);
+
+  const misionesCompletadasJSON = '<%- JSON.stringify(misionesCompletadas) %>';
+  const misionesCompletadas = JSON.parse(misionesCompletadasJSON);
+
+  const misiones2 = [
+    'Mision 1: Aros',
+    'Mision 2: Semaforo',
+    'Mision 3: Logo Quiz',
+    'Mision 4: Trivia',
+  ];
+
+  const labels2 = [...misiones2];
+
+  const datosMisiones2 = [];
+
+  misionesCompletadas.forEach((misionCompletada) => {
+    datosMisiones2.push(misionCompletada.vecesCompletadas);
+  });
+
+  const data2 = {
+    labels: labels2,
+    datasets: [
+      {
+        label: '# de misiones',
+        backgroundColor: 'rgb(228,82,52)',
+        borderColor: 'rgb(228,82,52)',
+        data: datosMisiones2,
+      },
+    ],
+  };
+  const config2 = {
+    type: 'bar',
+    data: data2,
+    options: {},
+  };
+
+  var myChart2 = new Chart(document.getElementById('myChart2'), config2);
+</script>
+
+<%- include('../partials/footer.ejs') %>

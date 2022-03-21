@@ -1,0 +1,31 @@
+<%- include('partials/header.ejs') %> <%- include('partials/navbar.ejs') %>
+
+<div class="login__content">
+  <div class="login__logo">
+    <img src="img/logo.jpg" alt="" />
+  </div>
+  <div><% if(messages.error) { %> <%- messages.error %> <% } %></div>
+  <div class="login__form">
+    <form method="POST" action="/login">
+      <div class="login__form-control">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Usuario"
+        />
+      </div>
+      <div class="login__form-control">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Contraseña"
+        />
+      </div>
+      <button class="global__button" style="width: 95%">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

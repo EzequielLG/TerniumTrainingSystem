@@ -1,0 +1,50 @@
+<%- include('../partials/header.ejs') %> <%- include('../partials/navbar.ejs')
+%>
+
+<div class="global__dashboard-container">
+  <% if(user.tipoUsuario === 1) { %><%-
+  include('../partials/dashboard-admin.ejs') %>
+
+  <div class="global__dashboard-content">
+    <div class="user__ranking-title">
+      <h1 class="global__dashboard-title">Ranking</h1>
+    </div>
+
+    <div class="tabla">
+      <table>
+        <tr>
+          <th class="numero">#</th>
+          <th class="nombre">Nombre</th>
+          <th class="user">Usuario</th>
+          <th class="det">Puntos</th>
+        </tr>
+        <% puntosUsuariosSorted.forEach(function(usuario, index){ %> <%
+        if(usuario.idUsuario == user.idUsuario){ %>
+        <tr style="background-color: #e45234">
+          <td><%- index + 1 %></td>
+          <td><%- usuario.nombreCompleto %></td>
+          <td><%- usuario.username %></td>
+          <td><%- usuario.puntosTotales %></td>
+        </tr>
+        <% } else { %>
+        <tr>
+          <td><%- index + 1 %></td>
+          <td><%- usuario.nombreCompleto %></td>
+          <td><%- usuario.username %></td>
+          <td><%- usuario.puntosTotales %></td>
+        </tr>
+
+        <% } %> <% })%>
+      </table>
+    </div>
+
+    <% } else { %>
+    <div style="display: block; margin: 1rem 1rem">
+      <h1>No tiene permisos para ver esta página</h1>
+      <a href="/"><button>Volver a inicio</button></a>
+    </div>
+    <% } %>
+  </div>
+
+  <%- include('../partials/footer.ejs') %>
+</div>
